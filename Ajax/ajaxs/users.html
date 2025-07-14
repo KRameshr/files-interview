@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="data"></p>
+
+    <button id="btn-fetch-users">Fetch Users</button>
+
+    <table id="user-table" border="1"></table>
+
+    <script>
+      //https://dummyjson.com/users
+      const dataPara = document.querySelector("#data");
+      const btnFetchUsers = document.querySelector("#btn-fetch-users");
+      const userSection = document.querySelector("#user-section");
+
+      btnFetchUsers.addEventListener("click", () => {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          const data = JSON.parse(this.responseText);
+          console.log(data);
+
+          dataPara.innerText = "Total : " + data.total;
+
+          // const userTable = document.createElement('table');
+          const userTable = document.querySelector("#user-table");
+          data.users.forEach((userElement) => {
+            const userRow = document.createElement("tr");
+
+            const firstNameColumn = document.createElement("td");
+            firstNameColumn.innerText = userElement.firstName;
+
+            const lastNameColumn = document.createElement("td");
+            lastNameColumn.innerText = userElement.lastName;
+
+            const emailColumn = document.createElement("td");
+            emailColumn.innerText = userElement.email;
+
+            const genderColumn = document.createElement("td");
+            genderColumn.innerText = userElement.gender;
+
+            const ageColumn = document.createElement("td");
+            ageColumn.innerText = userElement.age;
+
+            userRow.appendChild(firstNameColumn);
+            userRow.appendChild(lastNameColumn);
+            userRow.appendChild(emailColumn);
+            userRow.appendChild(genderColumn);
+            userRow.appendChild(ageColumn);
+
+            userTable.appendChild(userRow);
+            // table -> row -> columne
+          });
+        };
+        // method, url, async-boolean
+        xhttp.open("GET", "https://dummyjson.com/users");
+        xhttp.send();
+      });
+    </script>
+  </body>
+</html>

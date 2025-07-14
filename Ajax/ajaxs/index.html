@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="data"></p>
+    <button id="btn-read-file">Read file</button>
+
+    <script>
+      const dataPara = document.querySelector("#data");
+      const btnReadFile = document.querySelector("#btn-read-file");
+
+      btnReadFile.addEventListener("click", () => {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          dataPara.innerText = this.responseText;
+        };
+        // method, url, async-boolean
+        xhttp.open("GET", "file.txt", true);
+        xhttp.send();
+      });
+    </script>
+  </body>
+</html>

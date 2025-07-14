@@ -1,0 +1,12 @@
+it not a technology
+
+A RESTful API is an architectural style for an application programming interface that uses HTTP requests to access and use data. That data can be used to GET, PUT, POST and DELETE data types, which refers to reading, updating, creating and deleting operations related to resources.
+
+HTTP verb CRUD action
+POST Create
+GET Read
+PUT Update
+PATCH Update
+DELETE Delete
+
+jquery is library
